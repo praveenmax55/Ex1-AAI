@@ -86,8 +86,8 @@ to_numpy().reshape(-1).tolist()
 .sort_index().to_numpy().reshape(-1).tolist()
             else:
                 # Caclucate probabilities
-                prob=pd.crosstab([data[parent1],data[parent2]],data[child], margins=False, normalize='index')
-.sort_index().to_numpy().reshape(-1).tolist()
+                prob=pd.crosstab([data[parent1],data[parent2]],data[child], margins=False,
+normalize='index').sort_index().to_numpy().reshape(-1).tolist()
     else: print("Error in Probability Frequency Calculations")
     return prob
 ```
@@ -97,8 +97,8 @@ H9am = BbnNode(Variable(0, 'H9am', ['<=60', '>60']), probs(df, child='Humidity9a
 H3pm = BbnNode(Variable(1, 'H3pm', ['<=60', '>60']), probs(df, child='Humidity3pmCat',
  parent1='Humidity9amCat'))
 W = BbnNode(Variable(2, 'W', ['<=40', '40-50', '>50']), probs(df, child='WindGustSpeedCat'))
-RT = BbnNode(Variable(3, 'RT', ['No', 'Yes']), probs(df, child='RainTomorrow', parent1='Humidity3pmCat',
-parent2='WindGustSpeedCat'))
+RT = BbnNode(Variable(3, 'RT', ['No', 'Yes']), probs(df, child='RainTomorrow',
+parent1='Humidity3pmCat',parent2='WindGustSpeedCat'))
 ```
 ### Create Network
 ```python
